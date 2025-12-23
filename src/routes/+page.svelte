@@ -1,8 +1,15 @@
 <script lang="ts">
 	import Checkbox from '$lib/components/Checkbox.svelte';
+	import StatCard from '$lib/components/StatCard.svelte';
 	import Textarea from '$lib/components/Textarea.svelte';
 
 	let text = $state('');
+	let error: string | undefined = $state();
+	let excludeSpaces = $state(false);
+	let setCharacterLimit = $state(false);
+	let characterLimit: number | undefined = $state();
+	let charLimitElement: HTMLInputElement | undefined = $state();
+	let charLimitMirror: HTMLSpanElement | undefined = $state();
 
 	let characterCount = $derived.by(() => {
 		if (excludeSpaces) {
@@ -12,16 +19,17 @@
 		}
 	});
 
-	let wordCount = $derived.by(() => {});
+	let wordCount = $derived((text.match(/\b\w+\b/g) || []).length);
 
-	let sentenceCount = $derived.by(() => {});
+	let sentenceCount = $derived.by(() => {
+		const trimmedStr = text.trim();
+		if (trimmedStr.length == 0) return 0;
+		const sentenceEndings = trimmedStr.match(/[.!?]+/g);
+		if (!sentenceEndings) return 1;
+		return sentenceEndings.length;
+	});
 
-	let error: string | undefined = $state();
-	let excludeSpaces = $state(false);
-	let setCharacterLimit = $state(false);
-	let characterLimit: number | undefined = $state();
-	let charLimitElement: HTMLInputElement | undefined = $state();
-	let charLimitMirror: HTMLSpanElement | undefined = $state();
+	let readingTimeMins = $derived(wordCount / 200);
 
 	// Autosize character limit input
 	$effect(() => {
@@ -64,7 +72,21 @@
 				{/if}
 			</div>
 		</div>
-		Approx. reading time
+		{#if readingTimeMins === 0}
+			<span>Approx. reading time: 0 minutes</span>
+		{:else if readingTimeMins < 1}
+			<span>Approx. reading time: &lt; 1 minute</span>
+		{:else if Math.round(readingTimeMins) < 2}
+			<span>Approx. reading time: 1 minute</span>
+		{:else}
+			<span>Approx. reading time: {Math.round(readingTimeMins)} minutes</span>
+		{/if}
+	</div>
+
+	<div class="stat-cards">
+		<StatCard type="characters" count={characterCount} />
+		<StatCard type="words" count={wordCount} />
+		<StatCard type="sentences" count={sentenceCount} />
 	</div>
 </main>
 
@@ -116,6 +138,12 @@
 		line-height: 130%;
 		letter-spacing: -0.6px;
 		text-align: center;
+	}
+
+	.stat-cards {
+		margin-top: 48px;
+		display: flex;
+		gap: 16px;
 	}
 
 	@media (width < 768px) {

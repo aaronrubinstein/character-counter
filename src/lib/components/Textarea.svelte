@@ -10,6 +10,7 @@
 		aria-label="Input your text here"
 		aria-invalid={error ? 'true' : undefined}
 		class:invalid={error}
+		bind:value
 	></textarea>
 	{#if error}
 		<div class="error-message">
@@ -34,6 +35,19 @@
 		line-height: 140%;
 		letter-spacing: -0.6px;
 		color: var(--secondary-text);
+	}
+
+	textarea::-webkit-scrollbar {
+		width: 0.5rem;
+	}
+
+	textarea::-webkit-scrollbar-thumb {
+		background-color: grey;
+		border-radius: 12px;
+	}
+
+	textarea::-webkit-scrollbar-track {
+		background-color: transparent;
 	}
 
 	textarea:hover {
