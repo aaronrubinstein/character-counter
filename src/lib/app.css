@@ -36,6 +36,18 @@ html {
     scrollbar-gutter: stable;
 }
 
+/* Global styles to hide arrows for all number inputs */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; /* Some browsers add a margin by default */
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+  appearance: textfield; /* Standard property for newer browsers */
+}
+
 body[data-theme="light"] {
     --bg: hsla(0, 0%, 100%, 1);
     --title-text: hsla(233, 18%, 9%, 1);
@@ -50,6 +62,15 @@ body[data-theme="light"] {
     --input-border-focus: hsla(274, 90%, 73%, 1);
     --density-bar-bg: hsla(240, 24%, 96%, 1);
     --error: hsla(15, 99%, 43%, 1);
+    --checkbox-border:hsla(233, 18%, 9%, 1);
+    --checkbox-border-hover: hsla(235, 13%, 29%, 1);
+    --checkbox-border-focus: hsla(240, 26%, 92%, 1);
+    --checkbox-bg-focus: hsla(0, 0%, 100%, 1) ;
+    --checkbox-bg-checked: hsla(274, 90%, 80%, 1);
+    --checkbox-bg-checked-hover: hsla(274, 90%, 73%, 1);
+    --character-limit-input-border: hsla(235, 13%, 29%, 1);
+    --character-limit-input-text: hsla(233, 18%, 9%, 1);
+    
 
     background-image: url('/bg-light-theme.png');
 }
@@ -68,6 +89,14 @@ body[data-theme="dark"] {
     --input-border-focus: hsla(274, 90%, 73%, 1);
     --density-bar-bg: hsla(235, 14%, 15%, 1);
     --error: hsla(15, 99%, 67%, 1);
+    --checkbox-border: hsla(240, 26%, 92%, 1);
+    --checkbox-border-hover: hsla(0, 0%, 100%, 1);
+    --checkbox-border-focus: hsla(240, 26%, 92%, 1);
+    --checkbox-bg-focus: hsla(0, 0%, 100%, 1);
+    --checkbox-bg-checked: hsla(274, 90%, 80%, 1);
+    --checkbox-bg-checked-hover: hsla(274, 90%, 73%, 1);
+    --character-limit-input-border: hsla(235, 13%, 29%, 1);
+    --character-limit-input-text: hsla(0, 0%, 100%, 1);
 
     background-image: url('/bg-dark-theme.png');
 }
