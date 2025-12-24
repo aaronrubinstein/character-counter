@@ -1,7 +1,14 @@
 <script lang="ts">
 	import Checkbox from '$lib/components/Checkbox.svelte';
+	import LetterDensity from '$lib/components/LetterDensity.svelte';
 	import StatCard from '$lib/components/StatCard.svelte';
 	import Textarea from '$lib/components/Textarea.svelte';
+
+	interface LetterDensity {
+		character: string;
+		count: number;
+		percentage?: number;
+	}
 
 	let text = $state('');
 	let excludeSpaces = $state(false);
@@ -35,6 +42,36 @@
 			return `Limit reached! Your text exceeds ${characterLimit} characters.`;
 		}
 		return undefined;
+	});
+
+	let density = $derived.by(() => {
+		const input = text.toUpperCase().split('').sort();
+		let output = [];
+		let totalCount = 0;
+		let charCount = 1;
+
+		for (const [index, char] of input.entries()) {
+			if (char < 'A' || char > 'Z') continue;
+			totalCount++;
+			if (char === input[index + 1]) {
+				charCount++;
+			} else {
+				const obj: LetterDensity = {
+					character: char,
+					count: charCount
+				};
+				output.push(obj);
+				charCount = 1;
+			}
+		}
+
+		output.sort((a, b) => b.count - a.count);
+
+		for (const item of output) {
+			item.percentage = item.count / totalCount;
+		}
+
+		return output;
 	});
 
 	// Autosize character limit input
@@ -98,7 +135,13 @@
 	<h2>Letter Density</h2>
 
 	{#if text.trim().length > 0}
-		<p>WIP</p>
+		{#each density as letter}
+			<LetterDensity
+				character={letter.character}
+				count={letter.count}
+				percentage={letter.percentage as number}
+			/>
+		{/each}
 	{:else}
 		<p>No characters found. Start typing to see letter density.</p>
 	{/if}
