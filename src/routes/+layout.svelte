@@ -35,12 +35,12 @@
 <div class="content">
 	<header>
 		{#if darkMode}
-			<img src="/logo-dark-theme.svg" alt="Character Counter Logo" />
+			<img class="logo" src="/logo-dark-theme.svg" alt="Character Counter Logo" />
 			<button type="button" onclick={toggleTheme}>
 				<Sun />
 			</button>
 		{:else}
-			<img src="/logo-light-theme.svg" alt="Character Counter Logo" />
+			<img class="logo" src="/logo-light-theme.svg" alt="Character Counter Logo" />
 			<button type="button" onclick={toggleTheme}>
 				<Moon />
 			</button>
@@ -54,6 +54,7 @@
 	.content {
 		max-width: 990px;
 		margin: 34px auto;
+		padding: 0 32px;
 	}
 
 	header {
@@ -73,13 +74,18 @@
 
 	@media (width < 1070px) {
 		.content {
-			margin: 16px 40px;
+			margin: 16px auto;
 		}
 	}
 
 	@media (width < 768px) {
 		.content {
-			margin: 16px 16px;
+			margin: 16px auto;
+			padding: 0 16px;
+		}
+
+		img.logo {
+			height: 30px;
 		}
 	}
 </style>

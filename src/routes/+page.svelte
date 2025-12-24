@@ -4,7 +4,6 @@
 	import Textarea from '$lib/components/Textarea.svelte';
 
 	let text = $state('');
-	let error: string | undefined = $state();
 	let excludeSpaces = $state(false);
 	let setCharacterLimit = $state(false);
 	let characterLimit: number | undefined = $state();
@@ -30,6 +29,13 @@
 	});
 
 	let readingTimeMins = $derived(wordCount / 200);
+
+	let error = $derived.by(() => {
+		if (setCharacterLimit && characterLimit && characterLimit < characterCount) {
+			return `Limit reached! Your text exceeds ${characterLimit} characters.`;
+		}
+		return undefined;
+	});
 
 	// Autosize character limit input
 	$effect(() => {
@@ -88,6 +94,14 @@
 		<StatCard type="words" count={wordCount} />
 		<StatCard type="sentences" count={sentenceCount} />
 	</div>
+
+	<h2>Letter Density</h2>
+
+	{#if text.trim().length > 0}
+		<p>WIP</p>
+	{:else}
+		<p>No characters found. Start typing to see letter density.</p>
+	{/if}
 </main>
 
 <style>
@@ -132,6 +146,7 @@
 		padding: 4px 12px;
 		border-radius: 6px;
 		border: 1px solid var(--character-limit-input-border);
+		background-color: var(--bg);
 		color: var(----character-limit-input-text);
 		font-size: 16px;
 		font-weight: 400;
@@ -146,12 +161,51 @@
 		gap: 16px;
 	}
 
+	h2 {
+		margin-top: 24px;
+		margin-bottom: 20px;
+		font-size: 24px;
+		font-weight: 600;
+		line-height: 130%;
+		letter-spacing: -1px;
+		color: var(--primary-text);
+	}
+
+	p {
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 130%;
+		letter-spacing: -0.6px;
+		color: var(--secondary-text);
+	}
+
 	@media (width < 768px) {
 		h1 {
 			font-size: 40px;
 		}
+
 		br {
 			display: none;
+		}
+
+		.options-container {
+			height: auto;
+			margin-top: 16px;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: flex-start;
+			gap: 12px;
+		}
+
+		.options-checkboxes {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 12px;
+		}
+
+		.stat-cards {
+			margin-top: 40px;
+			flex-direction: column;
 		}
 	}
 </style>

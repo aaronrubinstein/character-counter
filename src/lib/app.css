@@ -52,7 +52,7 @@ body[data-theme="light"] {
     --bg: hsla(0, 0%, 100%, 1);
     --title-text: hsla(233, 18%, 9%, 1);
     --primary-text: hsla(233, 18%, 9%, 1);
-    --secondary-text: hsla(235, 13%, 19%, 1);
+    --secondary-text: hsla(235, 13%, 29%, 1);
     --card-text: hsla(233, 18%, 9%, 1);
     --input-bg: hsla(240, 24%, 96%, 1);
     --input-bg-hover: hsla(240, 26%, 92%, 1);
