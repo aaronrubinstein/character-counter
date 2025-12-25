@@ -70,6 +70,7 @@ body[data-theme="light"] {
     --checkbox-bg-checked-hover: hsla(274, 90%, 73%, 1);
     --character-limit-input-border: hsla(235, 13%, 29%, 1);
     --character-limit-input-text: hsla(233, 18%, 9%, 1);
+    --density-bar-bg: hsla(240, 24%, 96%, 1);
     
 
     background-image: url('/bg-light-theme.png');
@@ -97,6 +98,7 @@ body[data-theme="dark"] {
     --checkbox-bg-checked-hover: hsla(274, 90%, 73%, 1);
     --character-limit-input-border: hsla(235, 13%, 29%, 1);
     --character-limit-input-text: hsla(0, 0%, 100%, 1);
+    --density-bar-bg: hsla(235, 14%, 15%, 1);
 
     background-image: url('/bg-dark-theme.png');
 }

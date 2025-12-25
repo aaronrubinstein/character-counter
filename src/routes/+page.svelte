@@ -80,7 +80,7 @@
 		if (!charLimitMirror || !charLimitElement) return;
 		let inputWidth = charLimitMirror.offsetWidth;
 		if (inputWidth > 55) {
-			charLimitElement.style.width = inputWidth + 'px';
+			charLimitElement.style.width = inputWidth + 5 + 'px';
 		} else {
 			charLimitElement.style.width = '55px';
 		}
@@ -185,7 +185,6 @@
 
 	input {
 		outline: none;
-		/* min-width: 55px; */
 		padding: 4px 12px;
 		border-radius: 6px;
 		border: 1px solid var(--character-limit-input-border);
