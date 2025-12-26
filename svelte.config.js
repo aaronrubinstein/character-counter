@@ -19,7 +19,11 @@ const config = {
 		}
 	},
 
-	kit: { adapter: adapter() }
+	kit: { 
+		adapter: adapter({
+			fallback: '404.html'
+		})
+	}
 };
 
 export default config;
