@@ -1,38 +1,22 @@
-# sv
+# Frontend Mentor - Character counter solution
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This is a solution to the [Character Counter challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/character-counter-znSgeWs_i6).
 
-## Creating a project
+### Links
 
-If you're seeing this, you've probably already done this step. Congrats!
+- Solution URL: https://github.com/aaronrubinstein/character-counter
+- Live Site URL: https://aaronrubinstein.github.io/product-list-with-cart/
 
-```sh
-# create a new project in the current directory
-npx sv create
+### Screenshots
 
-# create a new project in my-app
-npx sv create my-app
-```
+**Light Mode**
 
-## Developing
+<img src="./solution/desktop-light.png" height=80% width=80%>
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+**Dark Mode**
 
-```sh
-npm run dev
+<img src="./solution/desktop-dark.png" height=80% width=80%>
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+**Mobile**
 
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+<img src="./solution/desktop-mobile-dark.png" height=30% width=30%>
