@@ -1,5 +1,7 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
+	import logoDarkTheme from '$lib/assets/logo-dark-theme.svg';
+	import logoLightTheme from '$lib/assets/logo-light-theme.svg';
 	import { browser } from '$app/environment';
 	import '$lib/app.css';
 	import Sun from '$lib/components/icons/Sun.svelte';
@@ -35,12 +37,12 @@
 <div class="content">
 	<header>
 		{#if darkMode}
-			<img class="logo" src="/logo-dark-theme.svg" alt="Character Counter Logo" />
+			<img class="logo" src={logoDarkTheme} alt="Character Counter Logo" />
 			<button type="button" onclick={toggleTheme}>
 				<Sun />
 			</button>
 		{:else}
-			<img class="logo" src="/logo-light-theme.svg" alt="Character Counter Logo" />
+			<img class="logo" src={logoLightTheme} alt="Character Counter Logo" />
 			<button type="button" onclick={toggleTheme}>
 				<Moon />
 			</button>

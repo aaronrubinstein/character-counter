@@ -1,4 +1,6 @@
 <script lang="ts">
+	import iconInfo from '$lib/assets/icon-info.svg';
+
 	let { value = $bindable(), error }: { value: string; error: string | undefined } = $props();
 </script>
 
@@ -14,7 +16,7 @@
 	></textarea>
 	{#if error}
 		<div class="error-message">
-			<img src="/icon-info.svg" alt="Error" />
+			<img src={iconInfo} alt="Error" />
 			<span class="error-message-text">{error}</span>
 		</div>
 	{/if}

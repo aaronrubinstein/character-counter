@@ -1,4 +1,7 @@
 <script lang="ts">
+	import patternCharacter from '$lib/assets/pattern-character-count.svg';
+	import patternWord from '$lib/assets/pattern-word-count.svg';
+	import patternSentence from '$lib/assets/pattern-sentence-count.svg';
 	import NumberFlow from '@number-flow/svelte';
 
 	let { count, type }: { count: number; type: 'characters' | 'words' | 'sentences' } = $props();
@@ -9,13 +12,13 @@
 	<!-- <p class="count">{count}</p> -->
 	{#if type === 'characters'}
 		<p class="label">Total Characters</p>
-		<img src="/pattern-character-count.svg" alt="" />
+		<img src={patternCharacter} alt="" />
 	{:else if type === 'words'}
 		<p class="label">Word Count</p>
-		<img src="/pattern-word-count.svg" alt="" />
+		<img src={patternWord} alt="" />
 	{:else}
 		<p class="label">Sentence Count</p>
-		<img src="/pattern-sentence-count.svg" alt="" />
+		<img src={patternSentence} alt="" />
 	{/if}
 </div>
 

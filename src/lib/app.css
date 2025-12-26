@@ -74,7 +74,7 @@ body[data-theme="light"] {
     --scrollbar-thumb: grey;
     
 
-    background-image: url('/bg-light-theme.png');
+    background-image: url('$lib/assets/bg-light-theme.png');
 }
 
 body[data-theme="dark"] {
@@ -103,7 +103,7 @@ body[data-theme="dark"] {
     --scrollbar-thumb: hsla(235, 13%, 29%, 1);
 
 
-    background-image: url('/bg-dark-theme.png');
+    background-image: url('$lib/assets/bg-dark-theme.png');
 }
 
 body {

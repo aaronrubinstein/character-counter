@@ -44,7 +44,7 @@
 	input:checked {
 		border: 1px solid var(--checkbox-bg-checked);
 		background-color: var(--checkbox-bg-checked);
-		background-image: url('/icon-check.svg');
+		background-image: url('$lib/assets/icon-check.svg');
 		background-repeat: no-repeat;
 		background-position: center;
 	}
