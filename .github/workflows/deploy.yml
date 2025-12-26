@@ -22,7 +22,7 @@ jobs:
 
       - name: build
         env:
-          BASE_PATH: '/${{ https://aaronrubinstein.github.io/character-counter/ }}'
+          BASE_PATH: '/character-counter'
         run: |
           npm run build
 
