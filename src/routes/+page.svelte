@@ -16,6 +16,7 @@
 	let characterLimit: number | undefined = $state();
 	let charLimitElement: HTMLInputElement | undefined = $state();
 	let charLimitMirror: HTMLSpanElement | undefined = $state();
+	let seeMoreDensity = $state(false);
 
 	let characterCount = $derived.by(() => {
 		if (excludeSpaces) {
@@ -135,13 +136,41 @@
 	<h2>Letter Density</h2>
 
 	{#if text.trim().length > 0}
-		{#each density as letter}
-			<LetterDensity
-				character={letter.character}
-				count={letter.count}
-				percentage={letter.percentage as number}
-			/>
+		{#each density as letter, index}
+			{#if index < 5}
+				<LetterDensity
+					character={letter.character}
+					count={letter.count}
+					percentage={letter.percentage as number}
+				/>
+			{:else if density.length > 5 && seeMoreDensity}
+				<LetterDensity
+					character={letter.character}
+					count={letter.count}
+					percentage={letter.percentage as number}
+				/>
+			{/if}
 		{/each}
+
+		{#if density.length > 5}
+			<button
+				type="button"
+				class="see-more-toggle"
+				onclick={() => (seeMoreDensity = !seeMoreDensity)}
+			>
+				<span>See {seeMoreDensity ? 'less' : 'more'}</span>
+				<svg
+					class={['down-arrow', seeMoreDensity && 'see-more']}
+					xmlns="http://www.w3.org/2000/svg"
+					height="24px"
+					viewBox="0 -960 960 960"
+					width="24px"
+					fill="currentColor"
+				>
+					<path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+				</svg>
+			</button>
+		{/if}
 	{:else}
 		<p>No characters found. Start typing to see letter density.</p>
 	{/if}
@@ -219,6 +248,28 @@
 		line-height: 130%;
 		letter-spacing: -0.6px;
 		color: var(--secondary-text);
+	}
+
+	.see-more-toggle {
+		height: 28px;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-size: 20px;
+		font-weight: 400;
+		line-height: 140%;
+		letter-spacing: -0.6px;
+		color: var(--primary-text);
+		margin-top: 8px;
+	}
+
+	.down-arrow {
+		color: var(--primary-text);
+		transition: transform 400ms;
+	}
+
+	.down-arrow.see-more {
+		transform: rotate(180deg);
 	}
 
 	@media (width < 768px) {

@@ -71,6 +71,7 @@ body[data-theme="light"] {
     --character-limit-input-border: hsla(235, 13%, 29%, 1);
     --character-limit-input-text: hsla(233, 18%, 9%, 1);
     --density-bar-bg: hsla(240, 24%, 96%, 1);
+    --scrollbar-thumb: grey;
     
 
     background-image: url('/bg-light-theme.png');
@@ -99,6 +100,8 @@ body[data-theme="dark"] {
     --character-limit-input-border: hsla(235, 13%, 29%, 1);
     --character-limit-input-text: hsla(0, 0%, 100%, 1);
     --density-bar-bg: hsla(235, 14%, 15%, 1);
+    --scrollbar-thumb: hsla(235, 13%, 29%, 1);
+
 
     background-image: url('/bg-dark-theme.png');
 }
@@ -108,4 +111,21 @@ body {
     --purple-dark: hsla(274, 90%, 73%, 1);
     --yellow: hsla(37, 100%, 50%, 1);
     --orange: hsla(15, 99%, 67%, 1);
+}
+
+body::-webkit-scrollbar {
+    background: var(--bg);
+    width: 1rem;
+
+}
+
+/* body::-webkit-scrollbar-track {
+    background: #e5e7e8;
+} */
+
+body::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 8px;
+    border: 4px solid transparent;
+    background-clip: content-box;
 }
