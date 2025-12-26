@@ -5,7 +5,7 @@ This is a solution to the [Character Counter challenge on Frontend Mentor](https
 ### Links
 
 - Solution URL: https://github.com/aaronrubinstein/character-counter
-- Live Site URL: https://aaronrubinstein.github.io/product-list-with-cart/
+- Live Site URL: https://aaronrubinstein.github.io/character-counter/
 
 ### Screenshots
 
